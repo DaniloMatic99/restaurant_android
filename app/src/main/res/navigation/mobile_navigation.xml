@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.restaurants.HomeFragment"
+        android:label="Restaurants"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_restaurantInfo"
+            app:destination="@id/restaurantInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.restaurants.FavoritesFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_restaurantInfo"
+            app:destination="@id/restaurantInfo" />
+        <action
+            android:id="@+id/action_favoritesFragment_to_emptyFavorite"
+            app:destination="@id/emptyFavorite"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.restaurants.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/restaurantInfo"
+        android:name="com.example.restaurants.RestaurantInfo"
+        android:label="Restaurant Name"
+        tools:layout="@layout/fragment_restaurant_info"
+        >
+        <action
+            android:id="@+id/action_restaurantInfo_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="score"
+            app:argType="string" />
+        <argument
+            android:name="snippet"
+            app:argType="string" />
+        <argument
+            android:name="imgUrl"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_restaurantInfo_to_favoritesFragment"
+            app:destination="@id/favoritesFragment"
+            app:popUpTo="@id/favoritesFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/emptyFavorite"
+        android:name="com.example.restaurants.EmptyFavorite"
+        android:label="fragment_empty_favorite"
+        tools:layout="@layout/fragment_empty_favorite" >
+        <action
+            android:id="@+id/action_emptyFavorite_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false"/>
+    </fragment>
+</navigation>
